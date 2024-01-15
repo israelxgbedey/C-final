@@ -76,8 +76,7 @@ void calculateBalance(vector<tuple<string, double, string>> transactions) {
         }
     }
     // Display the output
-    cout << "Input" << endl;
-    cout << "{AccountID} {Balance} {In Good Standing | Withdrawn}" << endl;
+    
     // Loop through the accounts and balances arrays
     for (int i = 0; i < NUM_ACCOUNTS; i++) {
         // Display the account number and balance
@@ -89,6 +88,42 @@ void calculateBalance(vector<tuple<string, double, string>> transactions) {
             cout << "Withdrawn" << endl;
         }
     }
+
+    // Ask the user to enter log
+    cout << "Please enter log : ";
+    string user_account;
+    cin >> user_account;
+    // Find the index of the user account in the accounts array
+    int user_index = -1;
+    for (int i = 0; i < NUM_ACCOUNTS; i++) {
+        if (accounts[i] == user_account) {
+            user_index = i;
+            break;
+        }
+    }
+    // Check if the user account is valid
+    if (user_index != -1) {
+        // Display the user account balance and status
+        cout << "Your account balance is: " << balances[user_index] << endl;
+        if (balances[user_index] >= 0) {
+            cout << "Your account is in good standing." << endl;
+        } else {
+            cout << "Your account is withdrawn." << endl;
+        }
+    } else { // Handle the error if the user account is invalid
+        cout << "Error: Invalid account number." << endl;
+    }
+
+    // Ask the user if they want to enter more logs
+    cout << "Do you want to enter more logs? (yes/no): ";
+    string more_logs;
+    cin >> more_logs;
+    if (more_logs == "yes") {
+        // Call calculateBalance recursively for additional logs
+        calculateBalance(transactions);
+    } else {
+        cout << "Exiting program." << endl;
+    }
 }
 
 // Define the main function
@@ -99,3 +134,4 @@ int main() {
     calculateBalance(transactions);
     return 0;
 }
+
