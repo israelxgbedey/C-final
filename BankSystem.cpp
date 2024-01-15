@@ -104,11 +104,11 @@ void calculateBalance(vector<tuple<string, double, string>> transactions) {
     // Check if the user account is valid
     if (user_index != -1) {
         // Display the user account balance and status
-        cout << "Your account balance is: " << balances[user_index] << endl;
+        cout << " Account balance is: " << balances[user_index] << endl;
         if (balances[user_index] >= 0) {
-            cout << "Your account is in good standing." << endl;
+            cout << " Account is in good standing." << endl;
         } else {
-            cout << "Your account is withdrawn." << endl;
+            cout << " Account is withdrawn." << endl;
         }
     } else { // Handle the error if the user account is invalid
         cout << "Error: Invalid account number." << endl;
